@@ -1,0 +1,132 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  font-family: "Comic Relief", cursive, sans-serif;
+  background-image: url("images/bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.header {
+  background-color: #ff3dce;
+  text-align: center;
+  color: #2b46e8;
+  padding: 20px 80px;
+  font-family: "Courier Prime", monospace;
+}
+
+.intro {
+  background-color: #ffe84a;
+  padding: 20px;
+  color: #1d33c4;
+  margin-top: 20px;
+}
+
+.content {
+  background-color: #fff;
+  padding: 20px;
+  color: #1d33c4;
+  margin-top: 20px;
+}
+
+.time {
+  color: #d40000;
+  font-weight: bold;
+}
+
+.content-left {
+  background-color: rgba(255, 232, 74, 0.88);
+  padding: 20px 40px;
+  color: #000;
+  margin-top: 20px;
+  margin-right: 10px;
+}
+.content-right {
+  background-color: rgba(255, 61, 206, 0.87);
+  padding: 20px 40px;
+  color: #1d33c4;
+  margin-top: 20px;
+}
+
+li.li-emoji {
+  position: relative;
+  display: flex;
+  gap: 10px;
+}
+
+li.li-emoji:hover {
+  background-color: rgba(255, 232, 74, 0.5);
+}
+
+.li-important::before {
+  content: "IMPORTANT";
+  background-color: #ff3dce;
+  padding: 2px 5px;
+  position: absolute;
+  font-size: 10px;
+  top: 2px;
+  left: -85px;
+}
+
+.paketti {
+  width: 50px;
+  height: 50px;
+  background: url("images/paketti.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+
+  animation:
+    toRight linear 6.8s infinite alternate,
+    bounce linear 17s infinite alternate;
+}
+
+@keyframes bounce {
+  0% {
+    top: 0;
+  }
+  48% {
+  }
+  50% {
+    top: calc(100% - 50px);
+  }
+  52% {
+  }
+  100% {
+    top: 0;
+  }
+}
+
+@keyframes toRight {
+  0% {
+    left: 0;
+  }
+
+  100% {
+    left: calc(100% - 50px);
+  }
+}
+
+.ukko {
+  animation: linear infinite;
+  animation-name: run;
+  animation-duration: 5s;
+}
+@keyframes run {
+  50% {
+    transform: scaleX(-1);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
