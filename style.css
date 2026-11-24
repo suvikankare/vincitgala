@@ -1,36 +1,186 @@
-html,
+/* Fonts */
+
+/* The fonts are served from this site, not from Google Fonts. Only the
+   Latin character set and the weights the page uses are included.
+   Licenses: fonts/OFL-ComicRelief.txt and fonts/OFL-CourierPrime.txt */
+@font-face {
+  font-family: "Comic Relief";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/comic-relief-400.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Comic Relief";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/comic-relief-700.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Courier Prime";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/courier-prime-700.woff2") format("woff2");
+}
+
+/* Page */
+
 body {
-  height: 100%;
-  width: 100%;
-  margin: 0 auto;
+  margin: 0;
   font-family: "Comic Relief", cursive, sans-serif;
-  background-image: url("images/bg.jpg");
-  background-size: cover;
-  background-position: center;
+}
+
+/* The background image is a fixed layer behind the page. It always
+   covers the screen, however long the page is. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: url("images/bg.jpg") center / cover;
 }
 
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   padding: 20px;
 }
 
+/* <main> is as wide as the container and centers its children in the
+   same way, so the parts of the page are placed as if they were
+   directly in the container. */
+.main {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Yellow text on pink has too little contrast to read easily. A navy
+   outline around the letters gives it enough contrast. */
+.outlined {
+  text-shadow:
+    -1px -1px 0 #0f1870,
+    1px -1px 0 #0f1870,
+    -1px 1px 0 #0f1870,
+    1px 1px 0 #0f1870;
+}
+
+/* Header */
+
 .header {
   background-color: #ff3dce;
   text-align: center;
-  color: #2b46e8;
-  padding: 20px 80px;
+  color: #1a2aa8;
+  padding: 20px clamp(16px, 8vw, 80px);
   font-family: "Courier Prime", monospace;
 }
 
+/* The title scales with the window width, so it fits on one line on
+   every screen. It is 58 px on screens wider than about 970 px. */
+.header h1 {
+  font-size: clamp(28px, 6vw, 58px);
+  margin: 0;
+}
+
+/* The icons scale with the text, up to their natural height. width:
+   auto keeps their shape, from the width and height in the HTML. */
+.header h1 img {
+  height: min(1em, 57px);
+  width: auto;
+}
+
+.header h2 {
+  font-size: clamp(14px, 4vw, 24px);
+  color: #ffe84a;
+  margin: 0;
+}
+
+/* 1.625em is the natural height of the icons (39 px) at 24 px. */
+.header h2 img {
+  height: min(1.625em, 39px);
+  width: auto;
+}
+
+.date {
+  margin: 10px 0 0;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* Bold and at least 18.66 px, so the blue on pink counts as large text
+   for contrast (3:1). */
+.venue {
+  margin: 4px 0 0;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* Intro with scrolling text */
+
 .intro {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   background-color: #ffe84a;
   padding: 20px;
   color: #1d33c4;
   margin-top: 20px;
 }
+
+.marquee {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.marquee-text {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 25s linear infinite;
+}
+
+/* The text stops while the mouse is over it, and after the Pause
+   button or the text is clicked or tapped (the "paused" class). */
+.marquee:hover .marquee-text,
+.marquee.paused .marquee-text {
+  animation-play-state: paused;
+}
+
+.marquee-toggle {
+  flex: none;
+  font: inherit;
+  font-weight: bold;
+  color: #1d33c4;
+  background-color: #fff;
+  border: 2px solid #1d33c4;
+  border-radius: 6px;
+  padding: 4px 12px;
+  cursor: pointer;
+}
+
+.marquee-toggle:hover {
+  background-color: #fff4a4;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* Schedule */
 
 .content {
   background-color: #fff;
@@ -39,43 +189,139 @@ body {
   margin-top: 20px;
 }
 
-.time {
-  color: #d40000;
-  font-weight: bold;
+.schedule-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #e10600;
 }
 
-.content-left {
-  background-color: rgba(255, 232, 74, 0.88);
-  padding: 20px 40px;
-  color: #000;
-  margin-top: 20px;
-  margin-right: 10px;
-}
-.content-right {
-  background-color: rgba(255, 61, 206, 0.87);
-  padding: 20px 40px;
-  color: #1d33c4;
-  margin-top: 20px;
+.schedule {
+  list-style-type: none;
 }
 
-li.li-emoji {
+.schedule-item {
   position: relative;
   display: flex;
   gap: 10px;
 }
 
-li.li-emoji:hover {
+.schedule-item:hover {
   background-color: rgba(255, 232, 74, 0.5);
 }
 
-.li-important::before {
-  content: "IMPORTANT";
+.badge {
+  text-transform: uppercase;
   background-color: #ff3dce;
+  color: #0f1870;
   padding: 2px 5px;
   position: absolute;
   font-size: 10px;
   top: 2px;
   left: -85px;
+}
+
+.time {
+  color: #d40000;
+  font-weight: bold;
+}
+
+.event {
+  font-weight: bold;
+}
+
+.vote {
+  color: #c00000;
+  font-weight: bold;
+}
+
+.vote:hover,
+.vote:focus-visible {
+  background-color: #ffe84a;
+}
+
+/* Text for screen readers only. It is not shown, but it is read. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Dress code and What to expect */
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 10px;
+  margin-top: 20px;
+}
+
+.dress-code {
+  background-color: rgba(255, 232, 74, 0.88);
+  padding: 20px 40px;
+  color: #000;
+  margin-top: 20px;
+}
+
+.what-to-expect {
+  background-color: #ff3dce;
+  padding: 20px 40px;
+  color: #0f1870;
+  margin-top: 20px;
+}
+
+.what-to-expect h3 {
+  color: #ffe84a;
+  font-family: "Courier Prime", monospace;
+}
+
+/* The headings are written in normal case in the HTML, so screen
+   readers read them as words, and shown in capitals here. */
+.header h1,
+.schedule-title,
+.dress-code h3,
+.what-to-expect h3 {
+  text-transform: uppercase;
+}
+
+.ukko {
+  animation: run 5s linear infinite;
+}
+
+@keyframes run {
+  50% {
+    transform: scaleX(-1);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+/* Music */
+
+.music {
+  margin-top: 20px;
+}
+
+/* Bouncing gift */
+
+/* Covers the first screen. The gift moves inside it, and the keyframes
+   use its size through the cqw and cqh units. */
+.paketti-area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  container-type: size;
+  pointer-events: none;
 }
 
 .paketti {
@@ -84,49 +330,141 @@ li.li-emoji:hover {
   background: url("images/paketti.png");
   background-size: contain;
   background-repeat: no-repeat;
-  position: absolute;
 
   animation:
     toRight linear 6.8s infinite alternate,
     bounce linear 17s infinite alternate;
 }
 
+/* bounce animates transform and toRight animates translate. They are
+   separate properties, so the two animations add up. */
 @keyframes bounce {
   0% {
-    top: 0;
-  }
-  48% {
+    transform: translateY(0);
   }
   50% {
-    top: calc(100% - 50px);
-  }
-  52% {
+    transform: translateY(calc(100cqh - 50px));
   }
   100% {
-    top: 0;
+    transform: translateY(0);
   }
 }
 
 @keyframes toRight {
   0% {
-    left: 0;
+    translate: 0 0;
   }
-
   100% {
-    left: calc(100% - 50px);
+    translate: calc(100cqw - 50px) 0;
   }
 }
 
-.ukko {
-  animation: linear infinite;
-  animation-name: run;
-  animation-duration: 5s;
-}
-@keyframes run {
-  50% {
-    transform: scaleX(-1);
+/* Phones */
+
+@media (max-width: 700px) {
+  .container {
+    padding: 10px;
   }
-  100% {
-    transform: scaleX(1);
+
+  .header {
+    padding: 16px;
+  }
+
+  .date,
+  .venue {
+    font-size: 20px;
+  }
+
+  .schedule {
+    padding-left: 0;
+  }
+
+  .schedule-item {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .badge {
+    position: static;
+    display: inline-block;
+    margin-right: 6px;
+  }
+
+  .info-row {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+/* The narrowest phones, for example 320 px wide */
+@media (max-width: 360px) {
+  .header h1 {
+    font-size: 24px;
+  }
+
+  .header h2 {
+    font-size: 13px;
+  }
+}
+
+/* Reduced motion */
+
+/* Visitors can ask their system for less motion, for example because
+   moving content makes them dizzy. Stop the animations for them and
+   show the intro text as normal, still text. */
+@media (prefers-reduced-motion: reduce) {
+  .paketti,
+  .ukko,
+  .marquee-text {
+    animation: none;
+  }
+
+  .marquee {
+    white-space: normal;
+  }
+
+  .marquee-text {
+    padding-left: 0;
+  }
+
+  /* Nothing moves, so there is nothing to pause. */
+  .marquee-toggle {
+    display: none;
+  }
+}
+
+/* Print */
+
+/* Browsers do not print background colors and images by default. The
+   yellow text would then be yellow on white paper, and the moving and
+   playing parts of the page have no use on paper. */
+@media print {
+  body::before,
+  .paketti-area,
+  canvas,
+  .marquee-toggle,
+  .music {
+    display: none;
+  }
+
+  .header h2,
+  .what-to-expect h3 {
+    color: #0f1870;
+    text-shadow: none;
+  }
+
+  .marquee {
+    white-space: normal;
+  }
+
+  .marquee-text {
+    padding-left: 0;
+    animation: none;
+  }
+
+  .vote::after {
+    content: " (" attr(href) ")";
+    font-weight: normal;
+    word-break: break-all;
   }
 }

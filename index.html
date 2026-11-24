@@ -1,101 +1,140 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pikkujoulut Turku 2026</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
+    <meta name="robots" content="noindex">
+    <meta name="description" content="Vincit Turku Christmas Party Gala on 4.12.2026 at the Turku Office. Schedule, dress code and awards voting.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://suvikankare.github.io/vincitgala/">
+    <meta property="og:title" content="Vincit Turku Christmas Party Gala 2026">
+    <meta property="og:description" content="Vincit Turku Christmas Party Gala on 4.12.2026 at the Turku Office. Schedule, dress code and awards voting.">
+    <meta property="og:image" content="https://suvikankare.github.io/vincitgala/images/bg.jpg">
+    <meta property="og:image:width" content="842">
+    <meta property="og:image:height" content="595">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="images/paketti.png">
+    <meta name="theme-color" content="#ff3dce">
+    <link rel="preload" href="fonts/comic-relief-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/comic-relief-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/courier-prime-700.woff2" as="font" type="font/woff2" crossorigin>
+    <script
+      defer
+      src="https://unpkg.com/cursor-effects@1.0.18/dist/browser.js"
+      integrity="sha384-FMINDQUdC3urm7GrtpM8jjwMf+IaoB4aRmEclDNrRhm3xXKvXq2xt7AgG83Thpk8"
+      crossorigin="anonymous"
+    ></script>
     <script>
-      window.addEventListener("load", (event) => {
+      window.addEventListener("load", () => {
         new cursoreffects.fairyDustCursor();
-        });
+      });
+
+      // The Pause button, or a tap on the text, pauses and restarts the
+      // scrolling text. The button text says what the next press does.
+      document.addEventListener("DOMContentLoaded", () => {
+        const marquee = document.querySelector(".marquee");
+        const button = document.querySelector(".marquee-toggle");
+        const toggle = () => {
+          const paused = marquee.classList.toggle("paused");
+          button.textContent = paused ? "Play" : "Pause";
+        };
+        marquee.addEventListener("click", toggle);
+        button.addEventListener("click", toggle);
+      });
     </script>
-     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div class="paketti"></div>
+    <div class="paketti-area"><div class="paketti"></div></div>
     <div class="container">
-      <div class="header">
-        <h1 style="font-size: 58px; margin: 0"><img src="images/rainbow.png"> VINCIT TURKU <img src="images/rainbow.png"></h1>
-        <h2 style="color: #ffe84a; margin: 0"><img src="images/party.png"> Christmas Party Gala 2026 <img src="images/party-right.png"></h2>
-      </div>
-      <div class="intro">
-        <marquee><p>
-          <img src="images/star.png"> Time to dig out the sequins, straighten those bow ties and get ready for Turku's most fabulous, totally unofficial gala night of the year. <img src="images/star.png">
-        </p></marquee>
-      </div>
-      <div class="content">
-        <h3 style="text-align: center; color: #e10600; display: flex; align-items: center; justify-content: center;"><img src="images/clock.png" style="margin-right: 10px;">SCHEDULE<img src="images/clock.png" style="margin-left: 10px;"></h3>
-        <ul style="list-style-type: none;">
-          <li class="li-emoji li-important">
-            <span class="time">14:30</span>
-            <span style="font-weight: bold">Independence Day Coffee</span> —
-            cake with the Presidential Couple <img src="images/cake.png">
-          </li>
-          <li class="li-emoji">
-            <span class="time">17:00</span>
-            <span style="font-weight: bold">Doors Open</span> — the sparkling
-            celebration begins
-          </li>
-          <li class="li-emoji li-important">
-            <span class="time">17:30</span>
-            <span style="font-weight: bold">Gala Opening</span> — welcome drinks
-            and a toast <img src="images/drink.png"><img src="images/beer.png">
-          </li>
-          <li class="li-emoji">
-            <span class="time">18:00</span>
-            <span style="font-weight: bold">Gala Dinner</span> — sit down for the evening menu <img src="images/pizza.png">
-          </li>
-          <li class="li-emoji">
-            <span class="time">18:30</span>
-            <span style="font-weight: bold">Gala Awards</span> — shout-outs and
-            recognition. Vote! <img src="images/letter.png">
-          </li>
-          <li class="li-emoji">
-            <span class="time">19:30</span>
-            <span style="font-weight: bold">Live: Eeli Hallikainen, set 1</span> <img src="images/music.png">
-          </li>
-          <li class="li-emoji">
-            <span class="time">20:15</span>
-            <span style="font-weight: bold">Break</span> — mingling & port wine
-            tasting <img src="images/drink.png">
-          </li>
-          <li class="li-emoji">
-            <span class="time">21:30</span>
-            <span style="font-weight: bold">Live: Eeli Hallikainen, set 2</span> <img src="images/music.png">
-          </li>
-          <li class="li-emoji">
-            <span class="time">22:00</span>
-            <span style="font-weight: bold">After Gala</span> — music, darts,
-            games, partying <img src="images/ball.png">
-          </li>
-        </ul>
-      </div>
-      <div style="display: flex; justify-content: space-between; margin-top: 20px;">
-      <div class="content-left">
-        <h3>DRESS CODE: <br />GALA.</h3>
-        <p>Glitter, bow ties, red carpet, or your own style.</p>
-        <p><img class="ukko" src="images/ukko1.png"><img class="ukko" src="images/ukko2.png"></p>
-      </div>
-      <div class="content-right">
-        <h3 style="color: #FFE84A; font-family: 'Courier Prime', monospace;">WHAT TO EXPECT</h3>
-        <ul>
-          <li>Gala glamour and beautiful people</li>
-          <li>Awards, shout-outs & recognitions</li>
-          <li>Live music</li>
-          <li>Gala dinner</li>
-          <li>Late-night games and friendly competition</li>
-          <li>Music, great company and good-old office partying into the night office partying into the night</li>
-        </ul>
-      </div>
-    </div>
+      <header class="header">
+        <h1><img alt="" src="images/rainbow.png" width="72" height="57"> Vincit Turku <img alt="" src="images/rainbow.png" width="72" height="57"></h1>
+        <h2 class="outlined"><img alt="" src="images/party.png" width="43" height="39"> Christmas Party Gala 2026 <img alt="" src="images/party-right.png" width="43" height="39"></h2>
+        <p class="date"><time datetime="2026-12-04">4.12.2026</time></p>
+        <p class="venue">Turku Office</p>
+      </header>
+      <main class="main">
+        <div class="intro">
+          <div class="marquee">
+            <p class="marquee-text">
+              <img alt="" src="images/star.png" width="26" height="25"> Time to dig out the sequins, straighten those bow ties and get ready for Turku's most fabulous, totally unofficial gala night of the year. <img alt="" src="images/star.png" width="26" height="25">
+            </p>
+          </div>
+          <button class="marquee-toggle" type="button">Pause</button>
+        </div>
+        <section class="content" aria-labelledby="schedule-heading">
+          <h3 class="schedule-title" id="schedule-heading"><img alt="" src="images/clock.png" width="26" height="25">Schedule<img alt="" src="images/clock.png" width="26" height="25"></h3>
+          <ul class="schedule">
+            <li class="schedule-item">
+              <span class="badge">Important</span>
+              <time class="time" datetime="2026-12-04T14:30+02:00">14:30</time>
+              <span class="event">Independence Day Coffee</span> —
+              cake with the Presidential Couple <img alt="" src="images/cake.png" width="23" height="25">
+            </li>
+            <li class="schedule-item">
+              <time class="time" datetime="2026-12-04T17:00+02:00">17:00</time>
+              <span class="event">Doors Open</span> — the sparkling
+              celebration begins
+            </li>
+            <li class="schedule-item">
+              <span class="badge">Important</span>
+              <time class="time" datetime="2026-12-04T17:30+02:00">17:30</time>
+              <span class="event">Gala Opening</span> — welcome drinks
+              and a toast <img alt="" src="images/drink.png" width="23" height="24"><img alt="" src="images/beer.png" width="26" height="22">
+            </li>
+            <li class="schedule-item">
+              <time class="time" datetime="2026-12-04T18:00+02:00">18:00</time>
+              <span class="event">Gala Dinner</span> — sit down for the evening menu <img alt="" src="images/pizza.png" width="25" height="20">
+            </li>
+            <li class="schedule-item">
+              <time class="time" datetime="2026-12-04T18:30+02:00">18:30</time>
+              <span class="event">Gala Awards</span> — shout-outs and
+              recognition. <a class="vote" href="https://forms.cloud.microsoft/e/3Ed65MsUHp" target="_blank" rel="noopener">Vote!<span aria-hidden="true"> ↗</span><span class="visually-hidden"> (opens in a new tab)</span></a> <img alt="" src="images/letter.png" width="17" height="12">
+            </li>
+            <li class="schedule-item">
+              <time class="time" datetime="2026-12-04T19:30+02:00">19:30</time>
+              <span class="event">Live: Eeli Hallikainen, set 1</span> <img alt="" src="images/music.png" width="22" height="16">
+            </li>
+            <li class="schedule-item">
+              <time class="time" datetime="2026-12-04T20:15+02:00">20:15</time>
+              <span class="event">Break</span> — mingling & port wine
+              tasting <img alt="" src="images/drink.png" width="23" height="24">
+            </li>
+            <li class="schedule-item">
+              <time class="time" datetime="2026-12-04T21:30+02:00">21:30</time>
+              <span class="event">Live: Eeli Hallikainen, set 2</span> <img alt="" src="images/music.png" width="22" height="16">
+            </li>
+            <li class="schedule-item">
+              <time class="time" datetime="2026-12-04T22:00+02:00">22:00</time>
+              <span class="event">After Gala</span> — music, darts,
+              games, partying <img alt="" src="images/ball.png" width="22" height="21">
+            </li>
+          </ul>
+        </section>
+        <div class="info-row">
+          <section class="dress-code" aria-labelledby="dress-code-heading">
+            <h3 id="dress-code-heading">Dress code: <br>Gala.</h3>
+            <p>Glitter, bow ties, red carpet, or your own style.</p>
+            <p><img class="ukko" alt="" src="images/ukko1.png" width="78" height="61"><img class="ukko" alt="" src="images/ukko2.png" width="70" height="56"></p>
+          </section>
+          <section class="what-to-expect" aria-labelledby="what-to-expect-heading">
+            <h3 class="outlined" id="what-to-expect-heading">What to expect</h3>
+            <ul>
+              <li>Gala glamour and beautiful people</li>
+              <li>Awards, shout-outs & recognition</li>
+              <li>Live music</li>
+              <li>Gala dinner</li>
+              <li>Late-night games and friendly competition</li>
+              <li>Music, great company and good old office partying into the night</li>
+            </ul>
+          </section>
+        </div>
 
-    <audio controls loop style="margin-top: 20px;">
-        <source src="bells.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+        <audio class="music" controls loop aria-label="Christmas bells">
+          <source src="bells.mp3" type="audio/mpeg">
+        </audio>
+      </main>
+    </div>
   </body>
 </html>
